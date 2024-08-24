@@ -1,0 +1,5 @@
+clear
+const Token = await Token.deploy();
+const Token = await ethers.getContractFactory('Token'0;
+const token = await Token.deploy();
+const Token = await ethers.getContractFactory('Token');
