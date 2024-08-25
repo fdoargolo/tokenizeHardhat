@@ -1,53 +1,36 @@
-const Web3 = require("web3");
-const fs = require("fs");
-const path = require("path");
+//const Web3 = require("web3");
+//const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-// Configuração do Web3
-const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); // URL do nó local
+/*
 
-// Carregar o ABI e o Bytecode do contrato
 const contractPath = path.resolve(
   __dirname,
-  "artifacts",
-  "contracts",
-  "CreditToken.sol",
-  "Token.json"
+  "../artifacts/contracts/Token.sol/Token.json"
 );
-const contractJson = JSON.parse(fs.readFileSync(contractPath, "utf8"));
-const contractABI = contractJson.abi;
-const contractBytecode = contractJson.bytecode;
+const contractJSON = JSON.parse(fs.readFileSync(contractPath, "utf8"));
+const contractABI = contractJSON.abi;
 
-async function main() {
-  // Obter a lista de contas
-  const accounts = await web3.eth.getAccounts();
-  const deployer = accounts[0];
-  console.log("Deploying contracts with the account:", deployer);
+const contractAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 
-  // Criar uma instância do contrato
-  const contract = new web3.eth.Contract(contractABI);
+const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-  // Implantar o contrato
-  const deployTx = contract.deploy({
-    data: contractBytecode,
-    arguments: ["CreditToken", "MTK"], // Argumentos do construtor do contrato
-  });
+router.post("/create", async (req, res) => {
+  const { value } = req.body;
+  if (!value) {
+    return res.status(400).json({ error: "Valor do token é necessário" });
+  }
 
-  // Estimar o gás necessário
-  const gasEstimate = await deployTx.estimateGas();
-  console.log("Estimated gas:", gasEstimate);
-
-  // Enviar a transação de implantação
-  const deployedContract = await deployTx.send({
-    from: deployer,
-    gas: gasEstimate,
-  });
-
-  console.log("Token deployed to:", deployedContract.options.address);
-}
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
+  try {
+    const accounts = await web3.eth.getAccounts();
+    await contract.methods
+      .transfer(accounts[0], web3.utils.toWei(value, "ether"))
+      .send({ from: accounts[0] });
+    res.status(200).json({ message: "Token criado com sucesso" });
+  } catch (error) {
     console.error(error);
-    process.exit(1);
-  });
+    res.status(400).json({ error: "Erro ao criar token" });
+  }
+});
+*/
+
+module.exports = router;

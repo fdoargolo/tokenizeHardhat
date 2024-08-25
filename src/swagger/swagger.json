@@ -1,0 +1,216 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Gerenciamento de tokens [Nome da instituição financeira]",
+    "description": "Api para criação e tansferência de tokens e para predições estatísticas.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Servidor local"
+    }
+  ],
+  "paths": {
+    "/token/create": {
+      "post": {
+        "summary": "Cria um token com um valor especificado.",
+        "description": "Este endpoint cria um token com o valor fornecido no corpo da requisição.",
+        "tags": ["Token"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "description": "Valor do token a ser criado.",
+                    "example": "1000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token criado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Token criado com sucesso"
+                    },
+                    "value": {
+                      "type": "string",
+                      "example": "1000"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na criação do token, valor não fornecido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Valor do token é necessário"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token/transfer": {
+      "post": {
+        "summary": "Realiza a transferência de tokens entre dois endereços.",
+        "description": "Este endpoint transfere uma quantidade especificada de tokens do endereço `from` para o endereço `to`.",
+        "tags": ["Transferência"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "string",
+                    "description": "Endereço de origem da transferência.",
+                    "example": "0x1234567890abcdef"
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Endereço de destino da transferência.",
+                    "example": "0xfedcba0987654321"
+                  },
+                  "amount": {
+                    "type": "string",
+                    "description": "Quantidade de tokens a ser transferida.",
+                    "example": "50"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transferência realizada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Transferência realizada com sucesso"
+                    },
+                    "from": {
+                      "type": "string",
+                      "example": "0x1234567890abcdef"
+                    },
+                    "to": {
+                      "type": "string",
+                      "example": "0xfedcba0987654321"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "example": "50"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na transferência, dados insuficientes.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Informações de transferência são necessárias"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token/predict-value": {
+      "post": {
+        "summary": "Prediz o valor do token com base em dados do bureau.",
+        "description": "Este endpoint utiliza dados de bureau para prever o valor do token.",
+        "tags": ["Predição"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bureauData": {
+                    "type": "object",
+                    "description": "Dados do bureau para análise.",
+                    "example": { "creditScore": 750, "income": 50000 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Valor predito do token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "predictedValue": {
+                      "type": "number",
+                      "example": 100
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na predição, dados do bureau não fornecidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Dados do bureau são necessários para predição"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
