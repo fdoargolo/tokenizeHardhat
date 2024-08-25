@@ -1,7 +1,3 @@
-Claro! Aqui está um exemplo de documentação detalhada para o GitHub. Inclui uma introdução, detalhes técnicos e instruções para começar a usar o motor inteligente para o gerenciamento de tokens.
-
----
-
 # Motor Inteligente para Gerenciamento de Tokens
 
 ## Introdução
@@ -115,14 +111,12 @@ Certifique-se de ter as seguintes dependências instaladas:
          .status(400)
          .json({ error: "Informações de transferência são necessárias" });
      }
-     res
-       .status(200)
-       .json({
-         message: "Transferência realizada com sucesso",
-         from,
-         to,
-         amount,
-       });
+     res.status(200).json({
+       message: "Transferência realizada com sucesso",
+       from,
+       to,
+       amount,
+     });
    });
 
    // Endpoint para calcular o valor do token
@@ -179,7 +173,3 @@ Se você deseja contribuir para o projeto, por favor, siga estas etapas:
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Com essa documentação, qualquer desenvolvedor que visualizar o repositório GitHub terá uma compreensão clara de como configurar, usar e contribuir para o motor inteligente de gerenciamento de tokens.
