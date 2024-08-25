@@ -1,6 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
+<<<<<<< HEAD
     "/home/esther/GitProjects/tokenizeHardhat/contracts/Lock.sol": {
       "lastModificationDate": 1724546611900,
       "contentHash": "dacf0d5cb5b45dc83086de5bc1c26c2c",
@@ -41,6 +42,50 @@
       "lastModificationDate": 1724546764007,
       "contentHash": "94adc1a09995ea9b8b4a03e361daad8f",
       "sourceName": "contracts/MyContract.sol",
+=======
+    "/home/felipeargolo/hardhat-tutorial/tokenizeHardhat/contracts/Token.sol": {
+      "lastModificationDate": 1724557286571,
+      "contentHash": "818f165b22a8bb36030c7b582a911ba2",
+      "sourceName": "contracts/Token.sol",
+>>>>>>> 8bdada9b9b6f57755eb9377869e5095465d4f340
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "MyContract"
+      ]
+    },
+    "/home/felipeargolo/hardhat-tutorial/tokenizeHardhat/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1724554890372,
+      "contentHash": "896f68942c3a20e9ae3c3c5bfd3add54",
+      "sourceName": "hardhat/console.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
@@ -67,10 +112,10 @@
       },
       "imports": [],
       "versionPragmas": [
-        "^0.8.0"
+        ">=0.4.22 <0.9.0"
       ],
       "artifacts": [
-        "MyContract"
+        "console"
       ]
     }
   }
