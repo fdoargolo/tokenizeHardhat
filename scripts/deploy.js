@@ -1,13 +1,48 @@
+const Web3 = require("web3");
+const fs = require("fs");
+const path = require("path");
+
+// Configuração do Web3
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); // URL do nó local
+
+// Carregar o ABI e o Bytecode do contrato
+const contractPath = path.resolve(
+  __dirname,
+  "artifacts",
+  "contracts",
+  "CreditToken.sol",
+  "Token.json"
+);
+const contractJson = JSON.parse(fs.readFileSync(contractPath, "utf8"));
+const contractABI = contractJson.abi;
+const contractBytecode = contractJson.bytecode;
+
 async function main() {
-  const [deployer] = await ethers.getSigners();
+  // Obter a lista de contas
+  const accounts = await web3.eth.getAccounts();
+  const deployer = accounts[0];
+  console.log("Deploying contracts with the account:", deployer);
 
-  console.log("Deploying contracts with the account:", deployer.address);
+  // Criar uma instância do contrato
+  const contract = new web3.eth.Contract(contractABI);
 
-  const CreditToken = await ethers.getContractFactory("CreditToken");
-  const initialSupply = ethers.utils.parseUnits("1000", 18); // Fornecimento inicial de 1000 tokens
-  const creditToken = await CreditToken.deploy(initialSupply);
+  // Implantar o contrato
+  const deployTx = contract.deploy({
+    data: contractBytecode,
+    arguments: ["CreditToken", "MTK"], // Argumentos do construtor do contrato
+  });
 
-  console.log("CreditToken deployed to:", creditToken.address);
+  // Estimar o gás necessário
+  const gasEstimate = await deployTx.estimateGas();
+  console.log("Estimated gas:", gasEstimate);
+
+  // Enviar a transação de implantação
+  const deployedContract = await deployTx.send({
+    from: deployer,
+    gas: gasEstimate,
+  });
+
+  console.log("Token deployed to:", deployedContract.options.address);
 }
 
 main()

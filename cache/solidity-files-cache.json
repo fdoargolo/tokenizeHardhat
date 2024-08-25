@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/esther/GitProjects/tokenizeHardhat/contracts/CreditToken.sol": {
-      "lastModificationDate": 1724596109560,
-      "contentHash": "e2dfae1fe1aa5da8e63e483ba96b6802",
+      "lastModificationDate": 1724599707743,
+      "contentHash": "cb50ff11f2fd1cf50467f20fbba6e9c5",
       "sourceName": "contracts/CreditToken.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -36,11 +36,11 @@
         "^0.8.20"
       ],
       "artifacts": [
-        "CreditToken"
+        "Token"
       ]
     },
     "/home/esther/GitProjects/tokenizeHardhat/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1724595572294,
+      "lastModificationDate": 1724600763024,
       "contentHash": "c6375ef25e84c90b3d15f9ec4eef218f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -81,7 +81,7 @@
       ]
     },
     "/home/esther/GitProjects/tokenizeHardhat/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1724595572291,
+      "lastModificationDate": 1724600763013,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -117,7 +117,7 @@
       ]
     },
     "/home/esther/GitProjects/tokenizeHardhat/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1724595572292,
+      "lastModificationDate": 1724600763017,
       "contentHash": "4aefc698f77ecbace7f401257dfe182d",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
@@ -155,7 +155,7 @@
       ]
     },
     "/home/esther/GitProjects/tokenizeHardhat/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1724595572301,
+      "lastModificationDate": 1724600763037,
       "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -191,7 +191,7 @@
       ]
     },
     "/home/esther/GitProjects/tokenizeHardhat/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1724595572301,
+      "lastModificationDate": 1724600763037,
       "contentHash": "4c02fa6f7ae7b6c289cef80424f0c875",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
